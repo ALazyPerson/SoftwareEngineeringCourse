@@ -1,0 +1,39 @@
+.logo_box .bottom>span{
+    float: right;
+}
+.logo_box .bottom>span>a{
+    margin-right:10px;
+}
+.remPassword{
+    color: #ccc !important;
+    vertical-align:middle;
+}
+.remPassword:hover{
+    color:#fff !important;
+}
+.remPassword>input{
+    vertical-align:middle;
+}
+.layui-tab-title{
+    color:#566473 !important;
+    border-color:#566473 !important;
+    text-align:center !important;
+    display:flex !important;
+}
+.layui-tab-title>li{
+    font-size:20px !important;
+    flex:1 !important;
+}
+.layui-this:after{
+    color: #fff !important;
+    border-bottom: 2px solid #fff !important;
+}
+.layui-this{
+    color:#fff !important;
+}
+.bottom .register, .bottom .forget{
+    color:#ccc !important;
+}
+.bottom .register:hover, .bottom .forget:hover{
+    color:#fff !important;
+}

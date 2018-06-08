@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>教学大纲</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<link rel="stylesheet" href="../public/assets/css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="..//public/assets/css/font-awesome.css">
+<!--必要样式-->
+<link rel="stylesheet" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/teachProgress.css">
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">教 师 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div id='pad-wrapper'>
+                            <div id="editparent">
+                                <div id='editControls' class='span12' style='text-align:center; padding:5px;'>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='undo' href='#'><i class='icon-undo'></i></a>
+                                        <a class='btn' data-role='redo' href='#'><i class='icon-repeat'></i></a>
+                                    </div>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='bold' href='#'><b>Bold</b></a>
+                                        <a class='btn' data-role='italic' href='#'><em>Italic</em></a>
+                                        <a class='btn' data-role='underline' href='#'><u><b>U</b></u></a>
+                                        <a class='btn' data-role='strikeThrough' href='#'><strike>abc</strike></a>
+                                    </div>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='justifyLeft' href='#'><i class='icon-align-left'></i></a>
+                                        <a class='btn' data-role='justifyCenter' href='#'><i class='icon-align-center'></i></a>
+                                        <a class='btn' data-role='justifyRight' href='#'><i class='icon-align-right'></i></a>
+                                        <a class='btn' data-role='justifyFull' href='#'><i class='icon-align-justify'></i></a>
+                                    </div>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='indent' href='#'><i class='icon-indent-right'></i></a>
+                                        <a class='btn' data-role='outdent' href='#'><i class='icon-indent-left'></i></a>
+                                    </div>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='insertUnorderedList' href='#'><i class='icon-list-ul'></i></a>
+                                        <a class='btn' data-role='insertOrderedList' href='#'><i class='icon-list-ol'></i></a>
+                                    </div>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='h1' href='#'>h<sup>1</sup></a>
+                                        <a class='btn' data-role='h2' href='#'>h<sup>2</sup></a>
+                                        <a class='btn' data-role='p' href='#'>p</a>
+                                    </div>
+                                    <div class='btn-group'>
+                                        <a class='btn' data-role='subscript' href='#'><i class='icon-subscript'></i></a>
+                                        <a class='btn' data-role='superscript' href='#'><i class='icon-superscript'></i></a>
+                                    </div>
+                                </div>
+                                <div id='editor' class='span12' contenteditable>
+                                        <h1 style="text-align: center;">《软件工程》课程教学大纲</h1>
+                                        <h2>一、课程基本信息</h2>
+                                        <p>课程编号：</p>
+                                        <p>英文名称名：Software Engineering<p/>
+                                        <p>总学时：54学时<p/>
+                                        <p>学分：3<p/>
+                                        <p>课程类别：专业必修课<p/>
+                                        <p>适用专业：全校本（专）计算机科学与技术<p/>
+                                        <p>先修课程：数据结构，大学数学，离散数学，计算机算法设计。<p/>
+                                        <h2>二、课程性质与目的、要求 </h2>
+                                        《软件工程》是计算机专业的一门工程性基础课程，在软件工程学科人才培养体系中占有重要的地位。软件开发是建立计算机应用系统的重要环节，人们通过软件工程学把软件开发纳入工程化的轨道，而软件工程学是用以指导软件人员进行软件的开发、维护和管理的科学。 《软件工程》已成为高等学校计算机软件教学体系中的一门核心课程，
+                                        本课程以IEEE最新发布的软件工程知识体系为基础构建内容框架，注重贯穿软件开发整个过程的系统性认识和实践性应用，以当前流行的统一开发过程、面向对象技术和UML语言作为核心，密切结合软件开发的先进技术、最佳实践和企业案例，力求从“可实践” 软件工程的角度描述需求分析、软件设计、软件测试以及软件开发管理，使学生在理解和实践的基础上掌握当前软件工程的方法、技术和工具。
+                                        通过本课程的学习，要求学生能掌握软件工程的基本概念、基本原理、开发软件项目的工程化的方法和技术及在开发过程中应遵循的流程、准则、标准和规范等；学生应能掌握开发高质量软件的方法，以及有效地策划和管理软件开发活动，为学生参加大型软件开发项目打下坚实的理论基础。
+                                        本课程注重培养学生理论应用于实践的能力，课堂上教师向学生讲述软件工程中的相关原理和概念，并通过课程设计，培养学生对整个软件开发过程的能力，让学生能切实体会到软件工程在实践中的指导作用，并按软件工程的要求完成规范的各项软件开发文档。本课程对提高学生的软件开发能力和项目管理能力有重要的现实意义。
+                                        <h2>三、教学内容及学时分配</h2>
+                                        <p>本课程的教学内容共分十三章。</p>
+                                        <p>第1章  软件工程学概述（2课时）</p>
+                                        <p>学习目的与要求：通过本章的学习，了解和掌握软件工程的基本概念（如软件和软件工程的定义、等），软件危机的表现形式、产生的原因及消除的途径，软件工程的基本原理、方法学，软件的生存期，几种主要的软件开发模型等。
+                                        知识点：①软件危机的产生、典型表现形式、产生的原因及消除的途径;②软件工程的基本原理、包括软件工程的定义、特性、方法学;③二种主要的软件开发方法;④软件生存周期;⑤软件过程、几种主要的开发模型。</p>
+                                        <p>1.1  软件危机</p>
+                                        <p>1.2  软件工程</p>
+                                        <p>1.3  软件生命周期</p>
+                                        <p>1.4  软件过程</p>
+                                        <p>1.5  小结</p>
+                                        
+                                        <h2>第2章  可行性研究（4课时）</h2>
+                                        <p>学习目的与要求：深刻理解可行性研究的必要性，掌握可行性研究的任务、过程、成本效益分析以及可行性研究报告的主要内容；掌握系统流程图、数据流程图、数据字典概念以及项目开发计划的基本内容。 
+                                        知识点：①可行性研究的任务、具体步骤、成本效益分析、可行性研究报告；②系统流程图；③数据流图；④数据字典。</p>
+                                        <p>2.1  可行性研究的任务</p>
+                                        <p>2.2  可行性研究过程</p>
+                                        <p>2.3  系统流程图</p>
+                                        <p>2.4  数据流图</p>
+                                        <p>2.5  数据字典</p>
+                                        <p>2.6  成本/效益分析</p>
+                                        <p>2.7  可行性研究报告</p>
+                                        <p>2.8　小结</p>
+                                        
+                                        <h2>第3章  需求分析（6课时）</h2>
+                                        <p>学习目的与要求：掌握需求分析的任务，需求获取的方法、分析建模与需求规格说明，掌握数据建模的实体联系图、数据规范化，掌握描述系统行为模型的状态转换图，掌握层次方框图、Warnier图、IPO（HIPO）图。掌握验证软件需求的必要性、方法。
+                                        知识点：①需求分析的任务，需求获取、分析建模与需求规格说明；②实体联系图与数据规范化；③状态转换图；④层次方框图；⑤   Warnier图；⑥IPO（HIPO）图；⑦验证软件需求。</p>
+                                        <p>3.1  需求分析的任务</p>
+                                        <p>3.2  与用户沟通获取需求的方法</p>
+                                        <p>3.3  分析建模与规格说明</p>
+                                        <p>3.4  数据规范化</p>
+                                        <p>3.5  验证软件需求</p>
+                                        <p>3.6  小结</p>
+                                        
+                                        <h2>第4章  形式化说明技术（2课时）</h2>
+                                        <p>学习目的与要求：掌握形式化方法的概念、优点和应用准则，初步掌握有穷状态机、Petri网、Z语言的概念和使用。
+                                        知识点：①形式化方法、非形式化方法、半形式化方法；②形式化方法的应用准则；③有穷状态机；④Petri网；⑤Z语言。</p>
+                                        <p>4.1  概述</p>
+                                        <p>4.2  有穷状态机</p>
+                                        <p>4.3  Petri网</p>
+                                        <p>4.4  Z语言</p>
+                                        <p>4.5  小结</p>
+                                        
+                                        <h2>第5章  总体设计（4课时）</h2>
+                                        <p>学习目的与要求：了解软件总体设计的目的、任务，掌握软件总体设计的过程、设计原理和启发规则，掌握描述软件结构的工具以及面向数据流的设计方法。能够将具体的数据流图的转换为软件的结构图，即变换分析技术和事务分析技术。
+                                        知识点：①总体设计、概要设计、初步设计；②软件总体设计的阶段和过程；③模块化、抽象、逐步求精、信息隐藏、模块独立；④启发规则； ⑤层次图、HIPO图、结构图；⑥面向数据流的设计方法（结构化设计方法-SD方法）。</p>
+                                        <p>5.1  设计过程</p>
+                                        <p>5.2  设计原理</p>
+                                        <p>5.3  启发规则</p>
+                                        <p>5.4  描绘软件结构的图形工具</p>
+                                        <p>5.5  面向数据流的设计方法</p>
+                                        <p>5.6  小结</p>
+                                        
+                                        <h2>第6章  详细设计（4课时）</h2>
+                                        <p>学习目的与要求：了解软件详细设计阶段的目的、任务和结构化程序设计的概念，掌握人机界面设计的方法、过程设计的工具以及面向数据结构的设计方法，了解程序复杂程度的定量度量。
+                                        知识点：①结构化程序设计；②人机界面设计的问题、设计方法；③程序流程图、盒图（N-S图）、PAD图、判定表、判定树、过程设计语言；④JACKSON图、JACKSON方法。</p> 
+                                        <p>6.1  结构程序设计</p>
+                                        <p>6.2  人机界面设计</p>
+                                        <p>6.3  过程设计的工具</p>
+                                        <p>6.4  面向数据结构的设计方法</p>
+                                        <p>6.5  程序复杂程度的定量度量</p>
+                                        <p>6.6  小结</p>
+                                        
+                                        <h2>第7章  实现（8课时）</h2>
+                                        <p>学习目的与要求：了解如何选择程序设计语言，培养良好的编码风格，掌握软件测试的目标、准则、方法和步骤，掌握单元测试、集成测试、确认测试的方法步骤，掌握白盒测试和黑盒测试技术的概念、方法，掌握调试过程与途径，了解软件可靠性的概念及其计算方法。能够按照测试的原则和技术，分析确定高效的测试用例。
+                                        知识点：①选择程序设计语言、编码风格；②软件测试基础；③单元测试、集成测试、确认测试；④白盒测试技术和黑盒测试技术； ⑤调试；⑥软件可靠性、可用性。</p>
+                                        <p>7.1  编码</p>
+                                        <p>7.2  软件测试基础</p>
+                                        <p>7.3  单元测试</p>
+                                        <p>7.4  集成测试</p>
+                                        <p>7.5  确认测试</p>
+                                        <p>7.6  白盒测试技术</p>
+                                        <p>7.7  黑盒测试技术</p>
+                                        <p>7.8  调试</p>
+                                        <p>7.9  软件可靠性</p>
+                                        <p>7.9  小结</p>
+                                        
+                                        <h2>第8章  维护（2课时）</h2>
+                                        <p>学习目的与要求：了解软件维护的定义，掌握软件维护的特点和过程，软件的可维护性的定义及提高可维护性的方法。掌握预防性维护和软件再工程过程的概念、方法。
+                                        知识点：①软件维护；②软件的可维护性；③预防性维护；④软件再工程过程。</p>
+                                        <p>8.1  软件维护的定义</p>
+                                        <p>8.2  软件维护的特点</p>
+                                        <p>8.3  软件维护过程</p>
+                                        <p>8.4  软件的可维护性</p>
+                                        <p>8.5  预防性维护</p>
+                                        <p>8.6  软件再工程过程</p>
+                                        <p>8.7  小结
+                                        
+                                        <h2>第9章  面向对象方法学引论（2课时，选讲）</h2>
+                                        <p>学习目的与要求：了解面向对象方法学的要点和优点，掌握面向对象的概念、建模，掌握对象模型、动态模型、功能模型以及三种模型的关系。
+                                        知识点：①面向对象方法学的特点；②面向对象；③面向对象建模；④对象模型、动态模型、功能模型。</p>
+                                        <p>9.1  面向对象方法学概述</p>
+                                        <p>9.2  面向对象的概念</p>
+                                        <p>9.3  面向对象建模</p>
+                                        <p>9.4  对象模型</p>
+                                        <p>9.5  动态模型</p>
+                                        <p>9.6  功能模型</p>
+                                        <p>9.7  3种模型之间的关系</p>
+                                        <p>9.8	小结</p>
+                                        
+                                        <h2>第10章  面向对象分析（4课时，选讲）</h2>
+                                        <p>学习目的与要求：掌握面向对象分析的过程、需求陈述，能够根据具体问题建立对象模型、动态模型、功能模型以及确定对象的服务。
+                                        知识点：①对象模型的层次；②面向对象分析与需求陈述；③建立对象模型；④建立动态模型；⑤ 建立功能模型；⑥ 确定服务。</p>
+                                        <p>10.1  面向对象分析的基本过程</p>
+                                        <p>10.2  需求陈述</p>
+                                        <p>10.3  建立对象模型</p>
+                                        <p>10.4  建立动态模型</p>
+                                        <p>10.5  建立功能模型</p>
+                                        <p>10.6  定义服务</p>
+                                        <p>10.7	小结</p>
+                                        
+                                        <h2>第11章  面向对象设计（4课时，选讲）</h2>
+                                        学习目的与要求：了解面向对象设计的准则和启发规则，掌握软件重用的概念和方法，掌握系统分解的方法，掌握设计问题域子系统、设计人机交互子系统、设计任务管理子系统、设计数据管理子系统、设计类中的服务、设计关联以及设计优化的方法。 
+                                        知识点：①面向对象设计的准则、启发规则；②软件重用；③系统分解；④设计问题域子系统；⑤设计人机交互子系统；⑥设计任务管理子系统；⑦设计数据管理子系统；⑧设计类中的服务；⑨设计关联；⑩设计优化。</p>
+                                        <p>11.1  面向对象设计的准则</p>
+                                        <p>11.2  启发规则</p>
+                                        <p>11.3  软件重用</p>
+                                        <p>11.4  系统分解</p>
+                                        <p>11.5  设计问题域子系统</p>
+                                        <p>11.6  设计人机交互子系统</p>
+                                        <p>11.7  设计任务管理子系统</p>
+                                        <p>11.8  设计数据管理子系统</p>
+                                        <p>11.9  设计类中的服务</p>
+                                        <p>11.10  设计关联</p>
+                                        <p>11.11  设计优化</p>
+                                        <p>11.12  小结</p>
+                                        <p>补充内容：UML基础与ROSE建模 （8课时，选讲）</p>   
+                                        <p>学习目的与要求：掌握UML基础知识，并能画出ROSE建模图，包括UML用例图、类图、对象图、包图、顺序图和合作图、状态图、构件图和部署图。</p>
+                                        
+                                        <h2>第12章  面向对象实现（2课时，选讲）</h2>
+                                        <p>学习目的与要求：掌握面向对象语言的特点以及如何选择面向对象的开发工具，养成良好的程序设计风格，掌握面向对象的软件测试的特点和策略，能够设计测试用例。 
+                                        知识点：①面向对象语言；②程序设计风格以及对可重用性、可扩充性、健壮性的影响；③面向对象的单元测试、集成测试、确认测试；④测试类的方法；⑤面向对象的测试用例。</p>
+                                        <p>12.1  程序设计语言</p>
+                                        <p>12.2  程序设计风格</p>
+                                        <p>12.3  测试策略</p>
+                                        <p>12.4  设计测试用例</p>
+                                        <p>12.5  小结</p>
+                                        
+                                        <h2>第13章  软件项目管理（2课时，选讲）</h2>
+                                        <p>学习目的与要求：掌握估算软件规模和工作量的技术，能够根据项目制定合理的进度计划，掌握团队组织的基本方法，了解软件的质量指标并掌握软件质量保证的措施，掌握软件配置管理，了解能力成熟度模型。
+                                        知识点：①代码行、功能点估算软件规模的技术；②进度计划中的甘特图、工程网络、关键路径；③团队组织；④软件质量指标、质量保证措施；⑤软件配置、软件配置管理过程；⑥CMM。</p>
+                                        <p>13.1  估算软件规模</p>
+                                        <p>13.2  工作量估算</p>
+                                        <p>13.3  进度计划</p>
+                                        <p>13.4  人员组织</p>
+                                        <p>13.5  质量保证</p>
+                                        <p>13.6  软件配置管理</p>
+                                        <p>13.7  能力成熟度模型</p>
+                                        <p>13.8  小结</p>
+                                        
+                                        <h2>四、教学方法</h2>
+                                        <p>教师在课堂上采用多媒体教学手段授课，上课时强调理论与实践的同等重要性，不断积累教学素材指导课堂讨论和实践，以提高学生的学习兴趣。
+                                        针对《软件工程》的课程特点，主讲教师根据多年的教学经验总结出了切实可行的教学方法：案例教学法和项目实践法，以提高教学质量。
+                                        案例教学法：在教学中创造条件引入实例，结合软件工程理论知识给学生讲解实例、介绍具体的开发过程和方法，并提出实际问题，启发学生思考解决的方法及比较方案的优劣。
+                                        项目实践法：为加强实践环节，提高学生学习的主动性，可将学生分组进行项目实践，提高学生的团队合作能力。方法是让学生利用课外时间相对独立完成一个模拟的科研项目，这些项目都是从实际项目中提炼出来的，具有典型性、客观性和启发性。教师采用点拔方式或共同探究的方式进行指导。实验进度可以和课堂教学同步，也可以在课堂教学结束后进行。这种项目练习以团队操练的方式进行。项目组根据项目需求，制定项目计划，进行分析、设计、编码和测试，运用本课程学到的各方面知识，分工协同、想办法、查资料、探寻问题的解决方案，同时在研究问题找出规律的过程中创造性地学到了知识，学生的创造能力、应用能力、综合能力和交流合作等大量非智力因素得到充分的发展。项目完成后，教师要求学生写专题论文，启发他们的思维，表达他们的见解，鼓励学生在本课程的学习中学会联系相关课程(如网络、数据结构、数据库等)的知识去思考和解决问题。
+                                        <h2>五、成绩考核方式</h2>
+                                        <p>总评成绩＝平时成绩（30％）＋期末成绩（70％）。
+                                        本课程平时成绩主要从期中测验情况、实验情况、出勤情况、课堂表现等几个方面进行考核。</p>
+                                        <h2>六、各教学环节学时分配</h2>
+                                        <p>讲     课     内     容	学   时</p>
+                                        <p>1、软件工程学概述	2</p>
+                                        <p>2、可行性研究	4</p>
+                                        <p>3、需求分析	6</p>
+                                        <p>4、形式化说明技术	2</p>
+                                        <p>5、总体设计	4</p>
+                                        <p>6、详细设计	4</p>
+                                        <p>7、实现	8</p>
+                                        <p>8、维护	2</p>
+                                        <p>9、选讲	2</p>
+                                        <p>9、复习、总结	2</p>
+                                        <p>10、实验	18</p>
+                                        <p>总计	54</p>
+                                        
+                                        <h2>七、教材与参考资料</h2>
+                                        <p>教材
+                                        《软件工程导论》第5版  张海藩 清华大学出版社，2008.1</p>
+                                        <p>参考资料
+                                        《实用软件工程》.郑人杰.  高等教育出版社出版
+                                        《软件工程—原理、方法与应用》.史济民. 北京：高等教育出版社
+                                        《现代软件工程》．周之英． 北京：科学出版社，
+                                        《软件工程——实践者之路》(第5版)  Roger S．Pressman．  北京：机械工业出版社，2001</p>
+                                        
+                                        <h2>八、大纲使用说明</h2>
+                                        <p>1、制订本教学大纲的依据：专业培养计划。</p>
+                                        <p>2、适用专业、层次：计算机相关专业；本专科层次。</p>
+                                        <p>3、本大纲主要适用于计算机相关专业，可以针对授课对象的专业不同课程大纲做相应的调整。</p>
+                                        <p>大纲修订人：颜远海                       修订日期：2012.02</p>
+                                        <p>大纲审定人：                             审定日期：</p>
+                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btnwrap">
+                    <button id="save" class="layui-btn layui-btn-sm" type="button" style="width: 100px">保存</button>
+                </div>
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/menu.js"></script>
+        <script src="../js/teacherJS/teachProgress.js"></script>
+        <script src="../public/assets/js/bootstrap.min.js"></script>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+			  //…
+            });
+            $(function() {
+                $('#editControls a').click(function(e) {
+                    switch($(this).data('role')) {
+                        case 'h1':
+                        case 'h2':
+                        case 'p':
+                            document.execCommand('formatBlock', false, '<' + $(this).data('role') + '>');
+                            break;
+                        default:
+                            document.execCommand($(this).data('role'), false, null);
+                            break;
+                    }
+                     
+                })
+            });
+            var _save=document.getElementById('save');
+            var _editor=document.getElementById('editor');
+            // <div id='editor' class='span12' contenteditable>
+            $("#save").click(function(){
+                $('#editor').html(" ")
+                console.log($('#editor').html(" "));
+            })
+		</script>
+	</body>
+</html>

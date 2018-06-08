@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>个人信息</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/personalInfo.css">
+<style>
+    .mg-bt{
+        margin-bottom: 50px;
+    }
+    .mg-tp{
+        margin-top: 50px;
+    }
+    #update{
+        margin-top:50px !important;
+        margin-right: 30%;
+    }
+</style>
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">学 生 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body mg-t-10">
+                <form class="layui-form inputInfo mg-10">
+                    <div class="progressInfo mg-10">信息完成情况：</div>
+                    <div class="layui-progress w-92" lay-showPercent="yes">
+                        <div class="layui-progress-bar"  id="head_progress"></div>
+                    </div>
+                </form>
+                <form class="layui-form inputInfo mg-tp">
+                    <div class="content_top_left ">
+                        <div class="layui-form-item mg-bt">
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">姓名：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" id="name" class="layui-input input_bb ">
+                                </div>
+                            </div>
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">性别：</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="sex" value="0" title="男">
+                                    <input type="radio" name="sex" value="1" title="女" checked>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item mg-bt">
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">出生年月：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" align="center" class="layui-input input_bb" id="year">
+                                </div>
+                            </div>
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">民族：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="national" class="layui-input input_bb">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item mg-bt">
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">籍贯：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input input_bb" id="nativePlace">
+                                </div>
+                            </div>
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">手机：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" class="layui-input input_bb" id="mobile">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item mg-bt">
+                            <div class="layui-inline w-one-sm">
+                                <label class="layui-form-label">身份证：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input input_bb" id="identityCard">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">学历：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" id="education" class="layui-input input_bb">
+                                </div>
+                            </div>
+                            <div class="layui-inline w-two">
+                                <label class="layui-form-label">邮箱：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="email" class="layui-input input_bb">
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="content_top_right mg-bt">
+                        <img src="../img/headPortrait.jpg" alt="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-btn-sm layui-btn" for="photo">更换照片</label>
+                                <input type="file" id="photo" style="position:absolute;clip:rect(0 0 0 0);">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                <div class="btnwrap">
+                    <button id="update" class="layui-btn layui-btn-sm" type="button" style="width: 100px">修改</button>
+                </div>
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/stumenu.js"></script>    
+        <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+        <script src="../js/studentJS/stupersonalInfo.js"></script>
+	</body>
+</html>

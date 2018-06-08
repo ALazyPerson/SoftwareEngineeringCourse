@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>习题审批</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/courseSrc.css">
+<link rel="stylesheet" href="../css/homeworkPush.css">    
+<link rel="stylesheet" href="../css/homeworkCheck.css">
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">教 师 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body">
+                <div class="content_top">习题列表</div>
+                <div class="tableWrap">
+                    <table id="couSrc" lay-filter="test"></table> 
+                </div>
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/menu.js"></script>
+        <script src="../js/teacherJS/homeworkCheck.js"></script>
+        <script type="text/html" id="toolBar">
+            <a class="layui-btn layui-btn-xs" lay-event="review">批阅</a>
+        </script>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+
+            });
+            function post(url, data, callback){
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    dataType:"JSON",
+                    data:  data ||'',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    success: callback
+                });
+            }
+            layui.use('table', function(){
+                var table = layui.table;
+                table.render({
+                    elem: '#couSrc'
+                    ,data: [{"id":1,"homeworkName":"软件工程_概述","name":"陈学勤","totalScore":5,"Answer":"软件是一系列按照特定顺序组织的计算机数据和指令的集合。一般来讲软件被划分为系统软件、应用软件和介于这两者之间的中间件。软件并不只是包括可以在计算机上运行的电脑程序，与这些电脑程序相关的文档一般也被认为是软件的一部分。简单的说软件就是程序+数据+其相关文档。对软件也有相应的要求：一、运行时能够提供所要求功能和性能的指令或计算机程序集合；二、程序能够满意地处理信息的数据结构；三、描述程序功能需求以及程序如何操作和使用所要求的文档。","score":5},{"id":2,"homeworkName":"软件工程_系统工程","name":"陈学勤","totalScore":5,"Answer":"编写程序就是人们通过某种计算机语言，编写一段代码文件，该代码文件通过编译和处理能够变为计算机能够理解的机器语言，在计算机上运行并得出结果。是指在利用电子计算机自动处理问题，人们根据自己对信息处理的要求，给电子计算机设计指令。软件开发是根据用户要求建造出软件系统或者系统中的软件部分的过程。软件开发是一项包括需求捕捉、需求分析、设计、实现和测试的系统工程。软件一般是用某种程序设计语言来实现的。通常采用软件开发工具可以进行开发。软件分为系统软件和应用软件，并不只是包括可以在计算机上运行的程序，与这些程序相关的文件一般也被认为是软件的一部分。 软件设计思路和方法的一般过程，包括设计软件的功能和实现的算法和方法、软件的总体结构设计和模块设计、编程和调试、程序联调和测试以及编写、提交程序。","score":4},{"id":3,"homeworkName":"IT项目管理","name":"陈学勤","totalScore":5,"Answer":"瀑布模型特点：瀑布模型又称为经典生命周期，它提出了一个系统的、顺序的软件开发方法，从用户需且规格开始，通过策划、建模、构建和部署的过程，最终提供完整的软件支持适应场合：当从沟通到部署都采用合理的线性工作流方式的时候，可以清楚地理解问题的需求。","score":5},{"id":4,"homeworkName":"工作分解结构(WBS)","name":"陈学勤","totalScore":5,"Answer":"原型模型特点：原型开发泛型开始于沟通。软件开发人员和其他利益相关者进行会晤，定义软件的整体目标，明确已知的需求，并大致勾画出以后再进一步定义的东西。然后迅速策划一个原型开发迭代并进行建模（以“快速设计”的方式）。快速设计要集中在那些最终用户能看到的方面（比如人机接口布局或者输出显示格式）。快速设计产生了一个原型。对原型进行部署，然后由利益相关者进行评估。根据利益相关者的反馈信息，进一步精炼软件的需求。在原型系统不断调整以满足各种利益相关者需求的过程中，采用迭代技术，同时也使开发者逐步清楚用户的需求。适应场合：很多时候，客户定义了软件的一些基本任务，但是没有详细定义系统的适应性和人机交互的形式。另一种情况下，开发人员可能对算法的效率、操作系统的适用性和人机交互的形式等情况并没有把握。在这些情况和类似情况下，采用原型开发泛型是最好的解决办法。","score":3},{"id":5,"homeworkName":"项目时间管理","name":"陈学勤","totalScore":5,"Answer":"增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。","score":5},{"id":6,"homeworkName":"软件工程_软件项目计划","name":"陈学勤","totalScore":5,"Answer":"螺旋模型特点：螺旋模型是一种演进式软件过程模型。它结合了原型的迭代性质和瀑布模型的可控性和系统性特点。它具有快速开发越来越完善的软件版本的潜力。他有两个显著的特点。一是采用循环的方式逐步加深系统定义和实现的深度同时降低风险。二是确定一系列里程碑作为支撑点，确保利益相关者认为可是可行的且可令各方满意的系统解决方案。适应场合：螺旋模型是开发大型系统和软件的很实际的方法。由于软件随着过程的推进而变化，因此在每一个演进层次上，开发者和客户都可以更好地理解和应对风险。","score":4},{"id":8,"homeworkName":"软件工程_软件需求分析","name":"陈学勤","totalScore":5,"Answer":"增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。","score":5},{"id":9,"homeworkName":"软件工程_软件需求分析","name":"陈学勤","totalScore":5,"Answer":"软件是一系列按照特定顺序组织的计算机数据和指令的集合。一般来讲软件被划分为系统软件、应用软件和介于这两者之间的中间件。软件并不只是包括可以在计算机上运行的电脑程序，与这些电脑程序相关的文档一般也被认为是软件的一部分。简单的说软件就是程序","score":3},{"id":10,"homeworkName":"软件工程_软件需求分析","name":"陈学勤","totalScore":5,"Answer":"增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。","score":2},{"id":11,"homeworkName":"软件工程_软件需求分析","name":"陈学勤","totalScore":5,"Answer":"软件是一系列按照特定顺序组织的计算机数据和指令的集合。一般来讲软件被划分为系统软件、应用软件和介于这两者之间的中间件。软件并不只是包括可以在计算机上运行的电脑程序，与这些电脑程序相关的文档一般也被认为是软件的一部分。简单的说软件就是程序","score":4},{"id":12,"homeworkName":"软件工程_软件需求分析","name":"陈学勤","totalScore":5,"Answer":"增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。","score":5},{"id":13,"homeworkName":"软件工程_软件需求分析","name":"陈学勤","totalScore":5,"Answer":"增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。","score":5}]//数据接口
+                    ,page: true 
+                    ,limit:10
+                    ,cols: [[ 
+                    {field: 'homeworkName', title: '习题标题', width:'60%'}
+                    ,{field: 'name', title: '姓名', width:'10%',align:'center'}
+                    ,{field: 'totalScore', title: '分值', width:'10%', sort: true,align:'center'}
+                    ,{field: 'score', title: '得分', width:'10%',sort: true,align:'center'} 
+                    ,{title: '操作',toolbar:'#toolBar',width:'10%',align:'center',fixed:'right'}
+                    ]]
+                });
+                table.on('tool(test)', function(obj){
+                    var data = obj.data;
+                    var layEvent = obj.event;
+                    if(layEvent === 'review'){ 
+                        layui.use('layer',function(){
+                            var layer = layui.layer;
+                            layer.open({
+                                title: '习题详情'
+                                ,shadeClose:true
+                                ,content: `<form class="layui-form inputInfo">
+                                    <div class="layui-form-item  ">
+                                        <div class="layui-inline w-title">
+                                            <label class="layui-form-label">作业标题：</label>
+                                            <div class="layui-input-block" >
+                                                <input type="text" id="homeworkId"  class="layui-input input_bb" value="${data.homeworkName}">               
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item  ">
+                                        <div class="layui-inline w-name">
+                                            <label class="layui-form-label">姓名：</label>
+                                            <div class="layui-input-block" >
+                                                <input type="text" id="homeworkId"  class="layui-input input_bb" value="${data.name}">               
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline w-one-bg">
+                                            <label class="layui-form-label">习题解答：</label>
+                                            <div class="layui-input-block">
+                                                <textarea name="workExperience" id="homeworkCont" class="input_bb layui-textarea">${data.Answer}</textarea>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline w-sm">
+                                            <label class="layui-form-label">习题总分：</label>
+                                            <div class="layui-input-block" >
+                                                <input type="text" id="homeworkNum" class="layui-input input_bb style="50px" value="${data.totalScore}">
+                                            </div>                     
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline w-sm">
+                                            <label class="layui-form-label">习题分值：</label>
+                                            <div class="layui-input-block" >
+                                                <input type="text" id="homeworkNum" class="layui-input input_bb style="50px" value="${data.score}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>`
+                                ,area: '1100px'
+                                ,maxWidth:1200
+                                ,btn:['批阅']
+                                ,yes: function(index, layero){
+                                    console.log(data.id);
+                                    post(adminUrl+" ",{id:data.id},function (res) {
+                                        if(res.result == 200 && res.status==200){
+                                            layer.msg("删除成功",{
+                                                icon:6,
+                                                time:1500
+                                            });
+                                            obj.del();
+                                        }else {
+                                            layer.msg("服务器出错",{
+                                                time:2500
+                                            });
+                                        }
+                                    })
+                                    layer.closeAll();
+                                }
+                            });
+                        })
+                    }
+                })           
+            });
+		</script>
+	</body>
+</html>

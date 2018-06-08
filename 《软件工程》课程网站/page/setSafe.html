@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>修改密码</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/setSafe.css">
+<style>
+.input_bb {
+    border: rgba(255,255,255,0.2) 2px solid !important;
+    background: none;
+    color: #fff;
+    border-radius: 10px;
+}
+.layui-btn {
+    background: rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+    border-radius: 10px;
+}
+.wrapTemp{
+    margin-left: -200px !important;
+}
+#update,#forword{
+    margin-top:30px;
+}
+#forword{
+    margin-left: 80px;
+}
+.layui-form-label{
+    width: 100px;
+}
+
+</style>
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">教 师 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body">
+                <div class="content_top">您可以使用以下方式修改您的密码：</div>
+                <div class="wrap">
+                    <div class="content_top_left">
+                        <div class="icon">
+                            <i class="layui-icon">&#xe612;</i>
+                        </div>
+                        <div>通过原密码修改</div>
+                    </div>
+                    <div class="content_top_right">
+                        <div class="icon">
+                            <i class="layui-icon">&#xe624;</i>
+                        </div>
+                        <div>通过邮箱修改</div>
+                    </div> 
+                    <!-- <form class="layui-form inputInfo">
+                        <div class="layui-form-item">
+                            <div class="layui-inline w-one-sm">
+                                <label class="layui-form-label">原密码：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" id="oldPassword" class="layui-input input_bb">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline w-one-sm">
+                                <label class="layui-form-label">新密码：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" id="newPassword" class="layui-input input_bb">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-inline ww-one-sm">
+                                <label class="layui-form-label">确认密码：</label>
+                                <div class="layui-input-block" >
+                                    <input type="text" id="secondNewPassword" class="layui-input input_bb">
+                                </div>
+                            </div>
+                        </div>     
+        
+                        <div class="btnwrap">
+                            <button id="update" class="layui-btn layui-btn-sm" type="button" style="width: 100px">修改</button>
+                        </div>
+                    </form> -->
+                </div>   
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/menu.js"></script>
+        <script src="../js/teacherJS/setSafe.js"></script>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+			  //…
+            });
+            window.onload=function(){
+                $('.wrap').removeClass('wrapTemp');
+            }
+            $(".wrap").on("click",".content_top_left",function(e){
+                $('.wrap').html(`<form class="layui-form inputInfo">
+                    <div class="layui-form-item">
+                        <div class="layui-inline w-one-sm">
+                            <label class="layui-form-label">原密码：</label>
+                            <div class="layui-input-block" >
+                                <input type="text" id="oldPassword" class="layui-input input_bb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline w-one-sm">
+                            <label class="layui-form-label">新密码：</label>
+                            <div class="layui-input-block" >
+                                <input type="text" id="newPassword" class="layui-input input_bb">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline ww-one-sm">
+                            <label class="layui-form-label">确认密码：</label>
+                            <div class="layui-input-block" >
+                                <input type="text" id="secondNewPassword" class="layui-input input_bb">
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="btnwrap">
+                        <button id="forword" class="layui-btn layui-btn-sm" type="button" style="width: 100px">返回</button>
+                        <button id="update" class="layui-btn layui-btn-sm" type="button" style="width: 100px">修改</button>
+                    </div>
+                </form>`);
+                $('.wrap').addClass('wrapTemp');
+            })
+            $(".wrap").on("click","#forword",function(e){
+                $('.wrap').html(`<div class="content_top_left">
+                    <div class="icon">
+                        <i class="layui-icon">&#xe612;</i>
+                    </div>
+                    <div>通过原密码修改</div>
+                </div>
+                <div class="content_top_right">
+                    <div class="icon">
+                        <i class="layui-icon">&#xe624;</i>
+                    </div>
+                    <div>通过二级密码修改</div>
+                </div> `);
+                $('.wrap').removeClass('wrapTemp');
+            });
+            $(".wrap").on("click","#update",function(e){
+                var data={};
+                var oldPassword=$("#oldPassword").val(); data.oldPassword=oldPassword;
+                var newPassword=$('#newPassword').val(); data.newPassword=newPassword; 
+                var secondNewPassword=$('#secondNewPassword').val(); data.secondNewPassword=secondNewPassword;
+                data=JSON.stringify(data);
+                console.log(data);
+
+                // $.ajax({
+                //     method:'POST',
+                //     url:'',
+                //     dataType:'jsonp',    
+                //     jsonp:'jsonpCallback',
+                //     body:data,
+                //     success(d){
+                //         console.log(d)
+                //     }
+                // })  
+            })
+		</script>
+	</body>
+</html>

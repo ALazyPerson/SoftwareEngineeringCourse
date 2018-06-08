@@ -1,0 +1,29 @@
+.mg-bt{
+    margin-bottom: 20px;
+}
+.w-title{
+    width:40% !important;
+}
+.w-name{
+    width:20% !important;
+}
+.w-sm{
+    width:17% !important;
+}
+.layui-form-label{
+    width:100px !important;
+}
+.input_bb{
+    border: rgba(255,255,255,0.2) 2px solid !important;
+    background: none;
+    color:#fff;
+    border-radius: 10px;
+}
+.w-one-bg{
+    width:100% !important;
+}
+#homeworkCont{
+    width:92% !important;
+    height:24em;
+    resize:none;
+}

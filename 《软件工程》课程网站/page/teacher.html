@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teacher</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<style>
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Layui代码修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    .layui-layout-body{
+        background: url('../img/demo-1-bg.jpg');
+    }
+    .layui-bg-black,.layui-layout-admin .layui-header{
+        background-color:rgba(1, 1, 1, 0) !important;
+    }
+    .layui-layout-admin{
+        position: relative;
+        top:-100%;
+        /* border-bottom: 1px solid rgba(255,255,255,.7); */
+    }
+    .layui-layout-admin .layui-body{
+        position: absolute;
+        left:200px;
+        color:#fff !important;
+        position: absolute;
+        top:60px !important;
+        overflow: visible !important;
+        overflow-y: visible !important;
+    }
+    .layui-nav{
+        background: rgba(1, 1, 1, 0) !important;
+    }
+    .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+        background: rgba(1, 1, 1, 0) !important;
+    }
+    .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this{
+        background: rgba(1, 1, 1, 0) !important;
+    }
+    .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+        background-color: #fff !important;
+    }
+    .layui-nav-itemed .layui-nav-child{
+        background-color: rgba(0,0,0,.1)!important;
+    }
+    .layui-logo{
+        color:#fff !important;
+        font-size: 20px !important;
+    }
+    .layui-nav-tree{
+        margin-top:5px;
+    }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~自定义代码修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    .border-right-top:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        height: 90%;
+        width: .5px;
+        background-color: #fff;
+    }
+    .border-right-bottom:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: 0;
+        bottom: auto;
+        right: 0;
+        height: 97%;
+        width: .5px;
+        background-color: #fff;
+    }
+    .border-bottom:after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: auto;
+        bottom: 0;
+        height: .5px;
+        width: 98%;
+        background-color: #fff;
+    }
+    .layui-body{
+        /* width:95%;
+        height:95%; */
+        padding:20px;
+        /* background: rgba(1,1,1,0.2) */
+    }
+</style>
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">教 师 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body">
+                内容主体
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/menu.js"></script>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+			  //…
+			});
+		</script>
+	</body>
+</html>

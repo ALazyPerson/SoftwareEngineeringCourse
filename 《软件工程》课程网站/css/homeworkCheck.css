@@ -1,0 +1,20 @@
+.layui-layer,.layui-layer-title{
+    background: url(../img/demo-1-bg.jpg) !important;
+    color:#fff !important;
+}
+.layui-layer-title{
+    border-bottom:rgba(255,255,255,0.2) 2px solid !important;
+}
+.layui-layer-setwin .layui-layer-close1{
+    color:#fff !important;
+}
+.layui-layer-btn .layui-layer-btn0{
+    background: rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+    border-radius: 5px;
+    border:none ;
+    width:8em;
+    height: 2.5em;
+    text-align: center;
+    line-height: 2.5em;
+}

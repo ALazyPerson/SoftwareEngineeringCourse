@@ -1,0 +1,166 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Layui代码修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.layui-layout-body{
+    background: url('../img/demo-1-bg.jpg');
+}
+.layui-bg-black,.layui-layout-admin .layui-header{
+    background-color:rgba(1, 1, 1, 0) !important;
+}
+.layui-layout-admin{
+    position: relative;
+    top:-100%;
+    /* border-bottom: 1px solid rgba(255,255,255,.7); */
+}
+.layui-layout-admin .layui-body{
+    position: absolute;
+    left:200px;
+    color:#fff !important;
+    position: absolute;
+    top:60px !important;
+    overflow: visible !important;
+    overflow-y: visible !important;
+}
+.layui-nav{
+    background: rgba(1, 1, 1, 0) !important;
+}
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+    background: rgba(1, 1, 1, 0) !important;
+}
+.layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this{
+    background: rgba(1, 1, 1, 0) !important;
+}
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+    background-color: #fff !important;
+}
+.layui-nav-itemed .layui-nav-child{
+    background-color: rgba(0,0,0,.1)!important;
+}
+.layui-logo{
+    color:#fff !important;
+    font-size: 20px !important;
+}
+.layui-nav-tree{
+    margin-top:5px;
+}
+.layui-form-radio>i:hover, .layui-form-radioed>i{
+    color:#fff !important;
+}
+.layui-laydate-main .layui-laydate-content .layui-laydate .layui-this{
+    background: #fff !important;
+}
+.laydate-set-ym span, .layui-laydate-header i:hover,.laydate-footer-btns span:hover{
+    color: #888888 !important;
+}
+.layui-progress{
+    background-color: rgba(150,150,150,.5) !important;
+}
+.layui-progress-text{
+    color:#fff !important;
+}
+.layui-progress-bar{
+    background-color: #fff !important;
+}
+.layui-btn{
+    background:rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+    border-radius: 10px;
+}
+.layui-btn:hover{
+    background: rgba(255,255,255,1) !important;
+    color:black !important;
+}  
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~自定义代码修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.border-right-top:after {
+    content: '';
+    position: absolute;
+    left: auto;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    height: 90%;
+    width: .5px;
+    background-color: #fff;
+}
+.border-right-bottom:after {
+    content: '';
+    position: absolute;
+    left: auto;
+    top: 0;
+    bottom: auto;
+    right: 0;
+    height: 97%;
+    width: .5px;
+    background-color: #fff;
+}
+.border-bottom:after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: auto;
+    bottom: 0;
+    height: .5px;
+    width: 98%;
+    background-color: #fff;
+}
+.layui-body{
+    padding:20px;
+}
+.content_top_left{
+    width:70%;
+    float: left;
+}
+.content_top_right{
+    width:30%;
+    float: left;
+}
+.content_top_right img{
+    width:60%;
+    height:17em;
+    margin-left: 30px;
+    -moz-box-shadow:0px 0px 12px #fff; 
+    -webkit-box-shadow:0px 0px 12px #fff; 
+    box-shadow:0px 0px 12px #fff;
+}
+.content_top_right .layui-form-item{
+    margin-left: 30%;
+    margin-top: 20px;
+}
+.layui-form-label{
+    width: 100px !important;
+}
+.w-two{
+    width:43% !important;
+}
+.w-one-sm{
+    width:87.5% !important;
+}
+.w-one-bg{
+    width:92% !important;
+}
+.w-one-bg textarea{
+    border: rgba(255,255,255,0.2) 2px solid !important;
+    background: none;
+    color:#fff;
+    border-radius: 10px;
+}
+.w-three{
+    width:30% !important;
+}
+.w-92{
+    width:92% !important;
+}
+.mg-10{
+    margin:17px;
+}
+.mg-t-10{
+    margin-top:-20px;
+}
+.input_bb{
+    border: rgba(255,255,255,0.2) 2px solid !important;
+    background: none;
+    color:#fff;
+    border-radius: 10px;
+}
+.btnwrap{
+    text-align: center;
+    margin-top:-5px;
+}

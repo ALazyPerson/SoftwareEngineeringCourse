@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>login</title>
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
+<link rel="stylesheet" type="text/css" href="public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+		<div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+					<canvas id="demo-canvas"></canvas>
+					<div class="logo_box">
+						<h3>《软件工程》课程网站欢迎你！</h3>
+						<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+						   	<ul class="layui-tab-title">
+						    	<li class="layui-this choosed">学生登陆</li>
+						    	<li class="teacher">教师登录</li>
+						  	</ul>
+						  	<div class="layui-tab-content">
+						  		<div class="layui-tab-item layui-show">
+									<form action="#" name="f" method="post">
+										<div class="input_outer">
+											<span class="u_user"></span>
+											<input name="logname" class="text" id="stuname" style="color: #FFFFFF !important" type="text" placeholder="请输入学生账户">
+										</div>
+										<div class="input_outer">
+											<span class="us_uer"></span>
+											<input name="logpass" class="text" id="stupasswd" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+										</div>
+										<div class="mb2"><a class="act-but submit" id="stulogin" style="color: #FFFFFF;cursor: pointer;">登录</a></div>
+									</form>
+									<div class="bottom">
+										<label class="remPassword"><input type="checkbox" name="" value=0>记住密码</label>
+										<span><a href="./forgetPasswd.html" class="register">忘记密码</a><a href="./sturegister.html" class="register">注册</a></span>
+									</div>
+						  		</div>
+    							<div class="layui-tab-item">
+    								<form action="#" name="f" method="post">
+										<div class="input_outer">
+											<span class="u_user"></span>
+											<input name="logname" class="text" id="teaname" style="color: #FFFFFF !important" type="text" placeholder="请输入教师账户">
+										</div>
+										<div class="input_outer">
+											<span class="us_uer"></span>
+											<input name="logpass" class="text" id="teapasswd" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+										</div>
+										<div class="mb2" id="login"><a class="act-but submit" id="tealogin"  style="color: #FFFFFF;cursor: pointer;">登录</a></div>
+									</form>
+									<div class="bottom">
+										<label class="remPassword"><input type="checkbox" name="" value=0>记住密码</label>
+										<span><a href="./forgetPasswd.html" class="register">忘记密码</a><a href="./tearegister.html" class="register">注册</a></span>
+									</div>
+    							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- /container -->
+        <script src="public/jquery-3.2.1.min.js"></script>        		
+		<script src="js/TweenLite.min.js"></script>
+		<script src="js/EasePack.min.js"></script>
+		<script src="js/rAF.js"></script>
+		<script src="js/demo-1.js"></script>
+		<script src="public/layui-v2.2.5/layui/layui.js"></script>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+
+			  //…
+			});
+
+			
+			$('#stulogin').click(function(){
+				let data={};
+				var stuname=$("#stuname").val(); data.stuname=stuname;
+				var stupasswd=$("#stupasswd").val(); data.stupasswd=stupasswd;
+				data=JSON.stringify(data);
+				console.log(data);
+				$.ajax({
+					type:"POST",
+					url:'',
+					async:false,
+					contentType : "application/json ; charset=utf-8",
+					data:data,
+					success:function(d){
+						if (d>=1) {
+							window.location.href = './page/stupersonalInfo.html';
+							sessionStorage.setItem('id',d);
+						}
+					}
+				})
+				
+			})
+
+			$('#tealogin').click(function(){
+				let data={};
+				var teaname=$("#teaname").val(); data.teaname=teaname;
+				var teapasswd=$("#teapasswd").val(); data.teapasswd=teapasswd;
+				data=JSON.stringify(data);
+				$.ajax({
+					method:'POST',
+					url:'',
+					contentType : "application/json ; charset=utf-8",
+					data:data,
+					success:function(d){
+						if (d>=1) {
+							window.location.href = './page/personalInfo.html';
+							sessionStorage.setItem('id',d);
+						}
+					}	
+				})
+			})
+		</script>	
+	</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>课程资源</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/courseSrc.css">
+<style>
+.layui-layer,.layui-layer-title{
+    background: url(../img/demo-1-bg.jpg) !important;
+    color:#fff !important;
+}
+</style>
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">教 师 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body">
+                <div class="content_top">课程资源</div>
+                <div class="tableWrap">
+                    <table id="couSrc" lay-filter="test"></table> 
+                </div>
+                <div class="btnwrap">
+                    <div class="bottomLeft">
+                        <label class="layui-btn-sm layui-btn" for="selectFile" id="updateCour">选择课件</label>
+                        <input type="file" id="selectFile" style="position:absolute;clip:rect(0 0 0 0);">
+                        <button type="button" id="fileOps" class="layui-btn layui-btn-sm" onclick="uploadPic('selectFil')">上传课件</button>                                             
+                    </div>
+                    <div class="bottomTop clearfix">
+                        <button type="button" id="uploadOps" class="layui-btn layui-btn-sm" onclick="uploadPic('uploadfile')">花名册导入</button>                     
+                        <label class="layui-btn-sm layui-btn" for="uploadfile" id="uploadFile">选择花名册</label>
+                        <input type="file" id="uploadfile" style="position:absolute;clip:rect(0 0 0 0);">
+                    </div>
+                    <div class="bottomBot clearfix">
+                        <button id="downloadfile" class="layui-btn layui-btn-sm" type="button" >花名册导出</button>
+                    </div>
+                    
+                <div>
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/menu.js"></script>
+        <script src="../js/teacherJS/courseSrc.js"></script>
+        <script type="text/html" id="toolBar">
+            <a class="layui-btn layui-btn-xs" lay-event="downloadCourse">下载</a>
+            <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
+        </script>
+		<script>
+            function timestampToTime(timestamp) {
+                var date = new Date(timestamp);
+                Y = date.getFullYear() + '-';
+                M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                D = (date.getDate()< 10 ? '0'+(date.getDate()) : date.getDate()) + ' ';
+                return Y+M+D;
+            }
+            // console.log(timestampToTime(new Date().getTime()));
+
+            let tableData
+            $.ajax({   //浏览页面时获取数据
+                method:'POST',
+                url:'',
+                contentType : "application/json ; charset=utf-8",
+                data:'',
+                success(d){
+                    tableData=d;   //得到列表的数据；
+                    layui.use('table', function(){
+                        var table = layui.table;
+                        
+                        //第一个实例
+                        table.render({
+                            elem: '#couSrc'
+                            // ,data:[{"id":1,"coursewareName":"软件工程_概述","access":1115,"download":519,"type":"课件"},{"id":2,"coursewareName":"软件工程_系统工程","access":1215,"download":419,"type":"课件"},{"id":3,"coursewareName":"IT项目管理","access":985,"download":259,"type":"课件"},{"id":4,"coursewareName":"工作分解结构(WBS)","access":815,"download":349,"type":"课件"},{"id":5,"coursewareName":"项目时间管理","access":1515,"download":529,"type":"课件"},{"id":6,"coursewareName":"软件工程_软件项目计划","access":1215,"download":259,"type":"课件"},{"id":7,"coursewareName":"软件工程_软件需求分析","access":715,"download":159,"type":"课件"}] //数据接口
+                            ,data:tableData
+                            ,page: true //开启分页'
+                            ,limit:10
+                            ,cols: [[ //表头
+                                // {field: 'id', title:'ID', width:'5%', sort: true,fixed: 'left'}
+                                {field: 'coursewareName', title: '课件名称', sort: true, width:'55%'}
+                                ,{field: 'access', title: '上传时间', width:'10%', sort: true,align:'center'}
+                                ,{field: 'download', title: '下载总次数', width:'10%',sort: true,align:'center'} 
+                                ,{field: 'type', title: '资源类型', width:'10%', sort: true,align:'center'}
+                                ,{fixed:'right',title: '操作',toolbar:'#toolBar',width:'15%',align:'center'}
+                            ]]
+                        }); 
+                        table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                            var data = obj.data; //获得当前行数据
+                            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                            var tr = obj.tr; //获得当前行 tr 的DOM对象
+                            let id=data.id;
+                            if(layEvent === 'downloadCourse'){ //下载课件
+                                downloadFileByForm(url,id,titles,keys);  //传了ID
+                            }else if(layEvent === 'delete'){  //删除课件
+                                $.ajax({
+                                    method:'POST',
+                                    url:'',
+                                    contentType : "application/json ; charset=utf-8",
+                                    data:id,  //传了ID
+                                    success(d){
+                                        console.log(d)
+                                    }
+                                })
+                            }
+                        });
+                    });
+                }
+            })
+			layui.use('element', function(){
+			  var element = layui.element;
+			  //…
+            });
+
+            function uploadPic(fileID){
+                console.log(fileID);
+                var formData = new FormData();
+                let uploadtime=timestampToTime(new Date().getTime());
+                formData.append("file",document.getElementById(fileID).files[0]);
+                formData.append("uploadTime",uploadtime);
+                formPost('',formData,function (res) {
+                        if(res.status==200 && res.result==200){
+                            layer.alert('上传成功！',{icon:6})
+                        }else {
+                            layer.alert('上传失败！',{icon:4})
+                        }
+                })
+            }
+            function formPost(url, data, callback){
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    dataType:"JSON",
+                    data:  data ||'',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    processData: false,
+                    contentType: false,
+                    crossDomain: true,
+                    success: callback
+                });
+            }
+
+            /*
+            * 下载excel
+            * @url  接口url
+            * @data  请求参数
+            * @titles  excel标题（数组）
+            * @keys excel标题所对应的字段名，必需与标题一一对应（数组）
+            * */
+            function downloadFileByForm(url,data,titles,keys) {
+                console.log("ajaxDownloadSynchronized");
+                var form = $("<form></form>").attr("action", url).attr("method", "post");
+                form.append($("<input></input>").attr("type", "hidden").attr("name", "data").attr("value", data));
+                form.append($("<input></input>").attr("type", "hidden").attr("name", "titles").attr("value", titles));
+                form.append($("<input></input>").attr("type", "hidden").attr("name", "keys").attr("value", keys));
+                form.appendTo('body').submit().remove();
+            }
+
+            $("#downloadfile").click(function(){
+                //传参就好，根据需要减少
+                downloadFileByForm(url,data,titles,keys);
+            })
+		</script>
+	</body>
+</html>

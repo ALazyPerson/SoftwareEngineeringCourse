@@ -1,0 +1,113 @@
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Layui代码修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    .layui-layout-body{
+        background: url('../img/demo-1-bg.jpg');
+    }
+    .layui-bg-black,.layui-layout-admin .layui-header{
+        background-color:rgba(1, 1, 1, 0) !important;
+    }
+    .layui-layout-admin{
+        position: relative;
+        top:-100%;
+        /* border-bottom: 1px solid rgba(255,255,255,.7); */
+    }
+    .layui-layout-admin .layui-body{
+        position: absolute;
+        left:200px;
+        color:#fff !important;
+        position: absolute;
+        top:60px !important;
+        overflow: visible !important;
+        overflow-y: visible !important;
+    }
+    .layui-nav{
+        background: rgba(1, 1, 1, 0) !important;
+    }
+    .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+        background: rgba(1, 1, 1, 0) !important;
+    }
+    .layui-nav .layui-nav-child dd.layui-this a, .layui-nav-child dd.layui-this{
+        background: rgba(1, 1, 1, 0) !important;
+    }
+    .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+        background-color: #fff !important;
+    }
+    .layui-nav-itemed .layui-nav-child{
+        background-color: rgba(0,0,0,.1)!important;
+    }
+    .layui-logo{
+        color:#fff !important;
+        font-size: 20px !important;
+    }
+    .layui-nav-tree{
+        margin-top:5px;
+    }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~自定义代码修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    .border-right-top:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        height: 90%;
+        width: .5px;
+        background-color: #fff;
+    }
+    .border-right-bottom:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: 0;
+        bottom: auto;
+        right: 0;
+        height: 97%;
+        width: .5px;
+        background-color: #fff;
+    }
+    .border-bottom:after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: auto;
+        bottom: 0;
+        height: .5px;
+        width: 98%;
+        background-color: #fff;
+    }
+    .layui-body{
+        padding:20px;
+    }
+    .content_top{
+        font-size: 16px;
+        border-bottom: 1px solid #fff;
+        padding:10px 0 25px 20px;
+        margin-right: 50px;
+    }
+    .content_top_left,.content_top_right{
+        width:400px;
+        height:200px;
+        border:2px solid rgba(255,255,255,.7);
+        float: left;
+        border-radius: 10px;
+        text-align: center;
+        color:rgba(255,255,255,.7);
+        font-size: 20px;
+    }
+    .content_top_left:hover,.content_top_right:hover{
+        color:#fff;
+        cursor: pointer;
+    }
+    .wrap{
+        margin-top: 50px;
+        margin-left: 30px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .icon{
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .icon i{
+        font-size: 60px;
+    }

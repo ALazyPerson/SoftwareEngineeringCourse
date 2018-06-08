@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>课程论坛</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../public/layui-v2.2.5/layui/css/layui.css">
+<!--必要样式-->
+<link rel="stylesheet" type="text/css" href="../css/component.css" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/courseSrc.css">
+<link rel="stylesheet" href="../css/homeworkPush.css">
+<style>
+    .demoWrap{
+        width:90%;
+        margin-left: 3%;
+        height:39em;
+        border:2px solid rgba(255,255,255,0.2);
+        border-radius: 5px;
+    }
+    .demoWrap:hover{
+        border:2px solid #fff;
+    }
+    .items{
+        padding:10px;
+        width:98%; 
+    }
+    .itemsTime:hover,.itemsRes:hover,.itemsAut:hover{
+        color:#fff !important;
+    }
+    .itemsTitle{
+        border-bottom:1px solid #fff;
+        padding:5px;
+        margin-left: 1%;
+        font-size: 18px;
+    }
+    .itemsAut{
+        margin-left: 10px;
+        font-size: 14px;
+        color:rgba(255,255,255,0.6);
+    }
+    .itemsTime{
+        float: right;
+        color:rgba(255,255,255,0.6);
+        margin-top: 5px;
+    }
+    .itemsContent{
+        margin-left: 1%;
+        padding:10px;
+        text-indent: 2em;
+    }
+    .itemsContent:hover{
+        cursor: pointer;
+    }
+    .itemsRes{
+        margin-left: 1%;
+        padding-left: 10px;
+        font-size:12px;
+        color:rgba(255,255,255,0.6);
+    }
+    
+    .demoWrap{
+        overflow: auto;
+    }
+    .itemsPush{
+        border-top:1px solid #fff;
+        margin:20px 2%;
+        padding-top:20px;
+    }
+    .item-title{
+        width:700px !important;
+    }
+    /*````````````````````````````````````Layui```````````````````````````````````````````*/
+    .layui-laypage{
+        margin-left: 2%;
+    }
+    .layui-laypage a, .layui-laypage span{
+        background: none !important;
+        color:rgba(255,255,255,0.6);
+        
+    }
+    #update{
+        margin-top:0px;
+        margin-bottom: 20px;
+    }
+</style>    	
+</head>
+<body class="layui-layout-body large-header" id="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <div class="layui-layout layui-layout-admin border-bottom">
+            <div class="layui-header">
+              <div class="layui-logo border-right-top">教 师 界 面</div>
+              <!-- 头部区域（可配合layui已有的水平导航） -->
+              <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                  <a href="javascript:;">
+                    <img src="../img/headPortrait.jpg" class="layui-nav-img">
+                    陈学勤
+                  </a>
+                </li>
+                <li class="layui-nav-item"><a href="../index.html">退出</a></li>
+              </ul>
+            </div>
+            <div class="layui-side layui-bg-black border-right-bottom" lay-filter="sidebar">
+                <div id="sidebar" class="layui-side-scroll"></div>
+            </div>
+            <div class="layui-body">
+                <div class="content_top mg-bt">课程论坛</div>
+                <div class="demoWrap">
+                    <!-- <div class="items">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div> -->
+                    <div id="demo0"></div>
+                    <div id="demo1">
+                        <!-- 主体 -->
+                    </div>
+                    <div class="itemsPush">
+                        <form class="layui-form inputInfo">
+                            <div class="layui-form-item  ">
+                                <div class="layui-inline w-title">
+                                    <label class="layui-form-label">标题：</label>
+                                    <div class="layui-input-block" >
+                                        <input type="text" id="homeworkId"  class="layui-input input_bb item-title">               
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline w-one-bg">
+                                    <label class="layui-form-label">内容：</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="workExperience" id="homeworkCont" class="input_bb layui-textarea"></textarea>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="btnwrap">
+                                <button id="update" class="layui-btn layui-btn-sm" type="button" style="width: 100px">发布</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../public/jquery-3.2.1.min.js"></script>
+		<script src="../js/TweenLite.min.js"></script>
+		<script src="../js/EasePack.min.js"></script>
+		<script src="../js/rAF.js"></script>
+        <script src="../js/demo-1.js"></script>
+        <script src="../public/layui-v2.2.5/layui/layui.js"></script>
+        <script src="../public/menu.js"></script>
+        <script src="../js/teacherJS/curriculumForum.js"></script>
+        <script type="text/html" id="toolBar">
+            <a class="layui-btn layui-btn-xs" lay-event="downloadCourse">下载</a>
+            <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
+        </script>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+			  //…
+            });
+            $('#demo0').on('click','.items',function(){
+                console.log($(this).children(".itemsTitle")[0].innerHTML.split("<")[0]);
+                // layer.open({
+                //     title: '习题详情'
+                //     ,shadeClose:true
+                //     ,content: `<form class="layui-form inputInfo">
+                //         <div class="layui-form-item  ">
+                //             <div class="layui-inline w-title">
+                //                 <label class="layui-form-label">作业标题：</label>
+                //                 <div class="layui-input-block" >
+                //                     <input type="text" id="homeworkId"  class="layui-input input_bb" value="${data.homeworkName}">               
+                //                 </div> 
+                //             </div>
+                //         </div>
+                //         <div class="layui-form-item  ">
+                //             <div class="layui-inline w-name">
+                //                 <label class="layui-form-label">姓名：</label>
+                //                 <div class="layui-input-block" >
+                //                     <input type="text" id="homeworkId"  class="layui-input input_bb" value="${data.name}">               
+                //                 </div> 
+                //             </div>
+                //         </div>
+                //         <div class="layui-form-item">
+                //             <div class="layui-inline w-one-bg">
+                //                 <label class="layui-form-label">习题解答：</label>
+                //                 <div class="layui-input-block">
+                //                     <textarea name="workExperience" id="homeworkCont" class="input_bb layui-textarea">${data.Answer}</textarea>
+                //                 </div>
+                //             </div> 
+                //         </div>
+                //         <div class="layui-form-item">
+                //             <div class="layui-inline w-sm">
+                //                 <label class="layui-form-label">习题总分：</label>
+                //                 <div class="layui-input-block" >
+                //                     <input type="text" id="homeworkNum" class="layui-input input_bb style="50px" value="${data.totalScore}">
+                //                 </div>                     
+                //             </div>
+                //         </div>
+                //         <div class="layui-form-item">
+                //             <div class="layui-inline w-sm">
+                //                 <label class="layui-form-label">习题分值：</label>
+                //                 <div class="layui-input-block" >
+                //                     <input type="text" id="homeworkNum" class="layui-input input_bb style="50px" value="${data.score}">
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </form>`
+                //     ,area: '1100px'
+                //     ,maxWidth:1200
+                //     ,btn:['批阅']
+                //     ,yes: function(index, layero){
+                //         console.log(data.id);
+                //         post(adminUrl+" ",{id:data.id},function (res) {
+                //             if(res.result == 200 && res.status==200){
+                //                 layer.msg("删除成功",{
+                //                     icon:6,
+                //                     time:1500
+                //                 });
+                //                 obj.del();
+                //             }else {
+                //                 layer.msg("服务器出错",{
+                //                     time:2500
+                //                 });
+                //             }
+                //         })
+                //         layer.closeAll();
+                //     }
+                // });
+            })
+            layui.use(['laypage', 'layer'], function(){
+                var laypage = layui.laypage
+                ,layer = layui.layer;
+                
+                //开启HASH
+                laypage.render({
+                    elem: 'demo1'
+                    ,count: 50
+                    ,first: '首页'
+                    ,last: '尾页'
+                    ,prev: '<em>上一页</em>'
+                    ,next: '<em>下一页</em>'
+                });
+                var data1=[
+                    `<div class="items" id="1">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="2">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="3">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="4">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="5">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="6">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="7">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="8">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="9">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="10">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="11">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="12">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="13">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="14">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="14">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="16">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="17">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="18">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="19">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="20">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="21">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="22">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="23">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="24">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="25">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="26">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="27">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="28">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="29">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="30">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="31">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`,
+                    `<div class="items" id="32">
+                        <div class="itemsTitle">软件工程_软件需求分析<sapn class="itemsAut">陈学勤</span><span class="itemsTime">2018-05-01</span></div>
+                        <div class="itemsContent">增量模型特点：增量模型综合了线性过程和并行过程的特征。随着时间的推进，增量模型在每个阶段都运用线性序列。每个线性序列生产出软件的可交互增量。适应场合：初始的软件需求有明确的定义，但是整个开发过程却不宜单纯运用线性模型。同时，可能迫切需要为用户限速提供一套功能有限的软件产品，然后在后续产品中再进行细化和扩展功能。</div>
+                        <div class="itemsRes">回复：<span class="itemsNum">10</span></div>
+                    </div>`
+                ]   
+                //调用分页
+                laypage.render({
+                    elem: 'demo1'
+                    ,count: data1.length
+                    ,jump: function(obj){
+                    //模拟渲染
+                    document.getElementById('demo0').innerHTML = function(){
+                        var arr = []
+                        ,thisData = data1.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+                        layui.each(thisData, function(index, item){
+                        arr.push('<li>'+ item +'</li>');
+                        });
+                        return arr.join('');
+                    }();
+                    }
+                });
+            });
+		</script>
+	</body>
+</html>
